@@ -6,7 +6,7 @@ Gérer les cas en fonction du nombre d'arguments :
 Vérifier d'abord, comme printf, si le premier caractère qui suit est "-", si c'est le cas, désigner tous les cas plausibles,
 sinon --> Vérifier s'il n'y a que des nombres et appliquer l'algo adaptatif, sinon --> Error.
 Possibilité de transformer le tout en "une chaine de caractère" et vérifier ensuite avec "isalpha" si la chaine entière est alphanumérique.
-
+ 
 SI on utilise une liste doublement chaînée, réadapter la structure de la libft.h ainsi que toutes les fonctions de base "ft_lst..."
 pour qu'elles puissent se promener plus facilement dans nos stacks.
 
