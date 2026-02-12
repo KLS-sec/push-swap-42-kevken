@@ -53,8 +53,8 @@ To calculate it, we looked at all the possible pairs of numbers in the stack. Ea
 
 
 ## Resources
-*kbrun* a utilisé des ressources vidéos de la chaine [M.A. BENALLAL](https://www.youtube.com/@m.a.benallal)
-
+*kbrun* a utilisé des ressources vidéos de la chaine [M.A. BENALLAL](https://www.youtube.com/@m.a.benallal) pour commencer à apprendre les bases des algorithmes utilisés
+I also watched a video about [Double linked lists](https://www.youtube.com/watch?v=589GpRJ6VFo) to learn how to handle them correctly.
 
 ## Algorithms justification
 

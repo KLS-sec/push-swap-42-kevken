@@ -1,6 +1,6 @@
 NAME = push_swap.a
 
-DIRS = Libft ft_printf Double_Chained_List
+DIRS = Libft ft_printf Double_Chained_List Operating_actions
 
 # !!!!!!!!!!!!! ATTENTION, CORRIGER LE *.C QUI EST INTERDIT !!!!!!!!!!
 
