@@ -1,26 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   disorder (copy).c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/11 15:59:11 by kbrun             #+#    #+#             */
+/*   Updated: 2026/02/11 16:00:56 by kbrun            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../push_swap.h"
 
-float	disorder_calculator(t_stack *lst, float total)
+float	disorder_calculator(t_stack_library *lst)
 {
-	t_stack	*top;
-	t_stack *bottom;
+	t_stack *searcher;
 	float i;
 
 	i = 0;
 	if (!lst)
-		exit(EXIT_FAILURE);
-	top = lst;
-	top = top -> next;
-	bottom = lst;
-	while (top != NULL)
+		exit(EXIT_FAILURE); // ATTENTION, COUPE LE PROGRAMME SANS RETOUR D'ERREUR, penser à ajouter ce retour
+	searcher = lst->begin;
+	while (searcher -> next != NULL)
 	{
-		if (top -> content > bottom -> content)
+		if (searcher -> content > searcher -> next -> content)
 			i++;
-		top = top -> next;
-		bottom = bottom -> next;
+		searcher = searcher -> next;
 	}
-	if (i == 0 || top == lst) //gere si il n y a pas assez d input
-		exit(EXIT_FAILURE);
-	return (i = i/total);
+	if (i == 0) //gere deja si il n y a pas assez d input
+		exit(EXIT_FAILURE); // ATTENTION, COUPE LE PROGRAMME SANS RETOUR D'ERREUR, penser à ajouter ce retour
+	return (i = i/lst -> length);
 }
