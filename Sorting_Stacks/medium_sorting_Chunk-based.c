@@ -1,5 +1,6 @@
 #include <unistd.h>
 
+//Square root (rounded down) of n
 int square_root(int n) //calcul racine de n ou va la valeur la valeur en dessou la plus proche
 {
 	int i;
@@ -10,6 +11,7 @@ int square_root(int n) //calcul racine de n ou va la valeur la valeur en dessou 
 	return(i);
 }
 
+//search for values under chunk and count the moves needed to reach it
 int medium_search(t_stack_library *lib_a, int chunk)
 {
 	t_stack *head;
@@ -33,19 +35,30 @@ int medium_search(t_stack_library *lib_a, int chunk)
 	return(i); //return le nb de roll a faire pour amener l element la ou il faut
 }
 
-void medium_move(int i, t_stack_library *lib_a, t_stack_library *lib_b, t_bench *bench)
+//take medium_search input as i and use it to move the targeted on the top of the stack
+void medium_move(int i, t_stack_library *lib_a, t_stack_library *lib_b, t_bench *bench) //pr regler le pb creer une struc mettre des val dedans? je met 1 en attendant, on vas creer une fonction pr ca
 {
 	while(i < 0)
 	{
-		rra(stack_a, print_state, bench);
+		rra(stack_a, 1, bench);
 		i++;
 	}
 		while(i > 0)
 	{
-		ra(stack_a, print_state, bench);
+		ra(stack_a, 1, bench);
 		i--;
 	}
 }
+
+//small efficiency enhancer that reverse top 2 struct of b if needed
+void pre_organiser (t_stack_library *stack_b, int print_state, t_bench *bench, int *j)
+{
+	if(lib_b -> order < lib_b -> next -> order && stack_b -> length > 1)
+		sb(stack_b, print_state, *bench);
+	j++; //to gain a line in the main fonc
+}
+
+
 
 /* 
 take as argunent
@@ -76,7 +89,7 @@ int medium_algorythm(t_stack_library *lib_a, t_stack_library *lib_b,
 		//mouvement puis push b
 		medium_move(medium_search(lib_a, chunk), lib_a, lin_b, bench); //searche_stack return le nombre de mouvement a faire pour medium_move
 		stack_b = pb(stack_a, stack_b, print_state, bench);//voir tete de la fonction
-		j++;
+		pre_organiser (stack_b, print_state, bench, j);
 		}
 		//recommence jusqu a avoir fait chunk fois l action pb
 		//fin du while
