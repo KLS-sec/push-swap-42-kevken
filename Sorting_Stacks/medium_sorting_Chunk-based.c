@@ -40,21 +40,21 @@ void medium_move(int i, t_stack_library *lib_a, t_stack_library *lib_b, t_bench 
 {
 	while(i < 0)
 	{
-		rra(stack_a, 1, bench);
+		rra(lib_a, 1, bench);
 		i++;
 	}
 		while(i > 0)
 	{
-		ra(stack_a, 1, bench);
+		ra(lib_a, 1, bench);
 		i--;
 	}
 }
 
 //small efficiency enhancer that reverse top 2 struct of b if needed
-void pre_organiser (t_stack_library *stack_b, int print_state, t_bench *bench, int *j)
+void pre_organiser (t_stack_library *lib_b, int print_state, t_bench *bench, int *j)
 {
-	if(lib_b -> order < lib_b -> next -> order && stack_b -> length > 1)
-		sb(stack_b, print_state, *bench);
+	if(lib_b -> order < lib_b -> next -> order && lib_b -> length > 1)
+		sb(lib_b, print_state, *bench);
 	j++; //to gain a line in the main fonc
 }
 
@@ -87,9 +87,9 @@ int medium_algorythm(t_stack_library *lib_a, t_stack_library *lib_b,
 		{
 		//double chercheur debut/fin pour trouver le plus proche (faire partir le fin du debut pour garder le compte des mouvements) parmis les < chunk
 		//mouvement puis push b
-		medium_move(medium_search(lib_a, chunk), lib_a, lin_b, bench); //searche_stack return le nombre de mouvement a faire pour medium_move
-		stack_b = pb(stack_a, stack_b, print_state, bench);//voir tete de la fonction
-		pre_organiser (stack_b, print_state, bench, j);
+		medium_move(medium_search(lib_a, chunk), lib_a, lib_b, bench); //searche_stack return le nombre de mouvement a faire pour medium_move
+		lib_b = pb(lib_a, lib_b, print_state, bench);//voir tete de la fonction
+		pre_organiser (lib_b, print_state, bench, j);
 		}
 		//recommence jusqu a avoir fait chunk fois l action pb
 		//fin du while
@@ -100,7 +100,7 @@ int medium_algorythm(t_stack_library *lib_a, t_stack_library *lib_b,
 		while(j < chunk && lib_b -> begin != NULL) //le retour de B vers A
 		{
 		medium_move(medium_search(lib_b, j), lib_a, lib_b); //vas chercher j, donner les instruction et le lancer vers A --->>> verifier les < et <= de partout
-		stack_a = pa(stack_a, stack_b, print_state, bench);
+		lib_a = pa(lib_a, lib_b, print_state, bench);
 		j++;
 		}
 	return();
