@@ -28,11 +28,13 @@ int disorder_check(t_stack_library *lib_a) //check disorder level
 }
 
 
-int finder(t_stack_library *lib_a, int n)	//trouve un ellement a push
-{																	//puis push back, recommencer et recall avec n++ jusqu a finir - faire un monolith puis separer?
+int cplx_search(t_stack_library *lib_a, int n)		//trouve un ellement a push
+{													//puis push back, recommencer et recall avec n++ jusqu a finir - faire un monolith puis separer?
 	int i;
+	t_stack *a;
 
 	i = 0;
+	a = t_stack_library -> begin
 	while(a != NULL)
 	{
 		if ((a -> order & (1 << n)) != 0)	//cherche bit a 0
@@ -56,30 +58,41 @@ int radix(t_stack_library *lib_a, t_stack_library *lib_b, t_bench *bench,
 	int print_state)
 {
 	t_stack *nav;
-	int bin;
+	int f;
 	int n;
 
 	nav = lib_a -> begin;
-	bin = 0;
 	n = 1;
 
-	while(nav -> next != NULL && n < 33)
+	while(n < 33 && disorder_check != 0)
 	{
-		if ((valeur & (1 << n)) != 0 )
-			lib_b = pb;
-		nav = nav -> next;
+		f = cplx_search;
+		if(f == -1)
+			while(lib_b -> length != 0)
+				nav = pa;
+		if (f != -1)
+			roller_a(f, *lib_a, *lib_b, *bench)
+		lib_b -> begin = pb;
+
 	}
-
-
-
-
-
 
 	return();
 }
+//rien ne vas
+//le refaire de 0
+//regler le pb d atteindre la fin de a
+//peut etre faire un bete navigateur qui roll jusque la ou il etait?
 
-
-123
-321
-111
-006
+while(desordre > 0)
+{
+cherche le bit a viser i
+si i > au total dans A a ce moment alors renvois tt b dedans
+roll jusqu a lui et envois vers b
+n++
+}
+while(order > 0)
+	while(i < lib_a -> length)
+	i = recherche le bit et return le nbr de mouvements a faire
+	if (i >= 0)
+		roll avec i
+	pb
