@@ -85,6 +85,9 @@ int radix(t_stack_library *lib_a, t_stack_library *lib_b, t_bench *bench,
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//if ( (valeur & (1 << n)) != 0 )
+//verifie si valeur du bit en partant de la droite est = 1
+
 while(order > 0 && n < 33)
 {
 	while(i < lib_a -> length)
