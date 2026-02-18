@@ -83,16 +83,88 @@ int radix(t_stack_library *lib_a, t_stack_library *lib_b, t_bench *bench,
 //regler le pb d atteindre la fin de a
 //peut etre faire un bete navigateur qui roll jusque la ou il etait?
 
-while(desordre > 0)
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+while(order > 0 && n < 33)
 {
-cherche le bit a viser i
-si i > au total dans A a ce moment alors renvois tt b dedans
-roll jusqu a lui et envois vers b
-n++
-}
-while(order > 0)
 	while(i < lib_a -> length)
-	i = recherche le bit et return le nbr de mouvements a faire
-	if (i >= 0)
-		roll avec i
-	pb
+	{
+		i = fonc recherche le bit et return le nbr de mouvements a faire
+		if (i < lib_a -> length)
+			fonc roll avec i
+		if (i < lib_a -> length)
+			pb
+	}
+	while (lib_b -> begin != NULL)
+		pa
+	n++;//le traqueur
+}
+
+a coder:
+-order (deja fait?)
+-recherche de bit(reuse?)
+-roll avec i (deja fait? / reuse?)
+
+//utilisable
+// if disorder check == 0 end the function;
+int disorder_check(t_stack_library *lib_a) //check disorder level
+{
+	t_stack base;
+	t_stack nav;
+	int i;
+
+	base = lib_a -> begin;
+	nav = base -> next;
+	i = 0;//0 ok, 1 error
+
+	while(i == 0 && base -> next != NULL)
+	{
+		if(base -> content > nav -> content)
+			return (1);
+		base = base -> next;
+		nav = nav -> next;
+	}
+
+	return(0)
+}
+
+//a editer pour prendre n au lieu de chunk et chercher le bit
+int medium_search(t_stack_library *lib_a, int chunk)
+{
+	t_stack *head;
+	t_stack *tail;
+	int i;
+
+	head = lib_a -> begin;
+	tail = lib_a -> end;
+	i = 1;
+	if(head -> order <= chunk)
+		return (0);
+	head = head->next;
+	while(head -> order > chunk && tail -> order > chunk)
+	{
+		head = head -> next;
+		tail = tail -> back;
+		i++;
+	}
+	if(tail -> order <= chunk)
+		i *= -1;
+	return(i); //return le nb de roll a faire pour amener l element la ou il faut
+}
+
+
+
+//utilisable (call dans medium_sorting)
+void roller_a(int i, t_stack_library *lib_a, t_bench *bench)
+{
+	while(i < 0)
+	{
+		rra(lib_a, 1, bench);
+		i++;
+	}
+		while(i > 0)
+	{
+		ra(lib_a, 1, bench);
+		i--;
+	}
+}
