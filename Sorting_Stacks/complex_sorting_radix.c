@@ -1,10 +1,10 @@
-#include "push_swap.h"
+//#include "push_swap.h"
 
-// if disorder check == 0 kill radix
-int disorder_check(t_stack_library *lib_a) //check disorder level
+// check disorder level - if disorder check == 0 kill radix
+int disorder_check(t_stack_library *lib_a)
 {
-	t_stack base;
-	t_stack nav;
+	t_stack *base;
+	t_stack *nav;
 
 	base = lib_a -> begin;
 	nav = base -> next;
@@ -48,7 +48,7 @@ int radix(t_stack_library *lib_a, t_stack_library *lib_b, t_bench *bench,
 	int i;
 	int n;//bit tracer
 
-	i = cplx_search(lib_a, n)
+	i = cplx_search(lib_a, n);
 	n = 1;
 	while(disorder_check(lib_a) > 0 && n < 32) //n doit commencer a 0
 	{
