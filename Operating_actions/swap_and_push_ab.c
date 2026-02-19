@@ -13,12 +13,13 @@
 #include "../push_swap.h"
 
 // Ici on développe "sa", "sb", "ss", "pa" et "pb"
-// Rajouter le booleen pour le checker, si assez de place (et qu'on fait le bonus)
+// Rajouter le booleen pour le checker, si assez de place
+// (et qu'on fait le bonus)
 void	sa(t_stack_library *stack_a, int print_state, t_bench *bench)
 {
 	t_stack	*swap_first;
 	int		temp;
-	
+
 	if (stack_length(stack_a) <= 1)
 		return ;
 	swap_first = stack_a->begin;
@@ -40,7 +41,7 @@ void	sb(t_stack_library *stack_b, int print_state, t_bench *bench)
 {
 	t_stack	*swap_first;
 	int		temp;
-	
+
 	if (stack_length(stack_b) <= 1)
 		return ;
 	swap_first = stack_b->begin;
@@ -74,10 +75,11 @@ void	ss(t_stack_library *stack_a, t_stack_library *stack_b,
 		return ;
 }
 
-// Voir si envoyer un pointeur de pointeur "**stack_a" pourrais retransformer la fonction en void
-t_stack_library *pa(t_stack_library *stack_a, t_stack_library *stack_b,
+// Voir si envoyer un pointeur de pointeur "**stack_a"
+// pourrais retransformer la fonction en void
+t_stack_library	*pa(t_stack_library *stack_a, t_stack_library *stack_b,
 					int print_state, t_bench *bench)
-{	
+{
 	if (stack_length(stack_b) < 1)
 		return (NULL);
 	stack_a = push_front_dlst(stack_a, stack_b->begin->content);
@@ -97,9 +99,10 @@ t_stack_library *pa(t_stack_library *stack_a, t_stack_library *stack_b,
 		return (stack_a);
 }
 
-// Voir si envoyer un pointeur de pointeur "**stack_b" pourrais retransformer la fonction en void
-t_stack_library *pb(t_stack_library *stack_a, t_stack_library *stack_b,
-					int print_state, t_bench *bench)
+// Voir si envoyer un pointeur de pointeur "**stack_b"
+// pourrais retransformer la fonction en void
+t_stack_library	*pb(t_stack_library *stack_a,
+	t_stack_library *stack_b, int print_state, t_bench *bench)
 {
 	if (stack_length(stack_a) < 1)
 		return (NULL);

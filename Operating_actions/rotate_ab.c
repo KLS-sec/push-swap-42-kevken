@@ -13,7 +13,8 @@
 #include "../push_swap.h"
 
 // Here we are implementing "ra", "rb" and "rr" (first become last)
-// Vérifier s'il y a besoin de renvoyer quelque chose quand on exécute une des actions
+// Vérifier s'il y a besoin de renvoyer quelque chose quand on exécute
+// une des actions
 void	ra(t_stack_library *stack_a, int print_state, t_bench *bench)
 {
 	if (stack_length(stack_a) <= 1)
@@ -30,6 +31,7 @@ void	ra(t_stack_library *stack_a, int print_state, t_bench *bench)
 	else
 		return ;
 }
+
 void	rb(t_stack_library *stack_b, int print_state, t_bench *bench)
 {
 	if (stack_length(stack_b) <= 1)
@@ -46,6 +48,7 @@ void	rb(t_stack_library *stack_b, int print_state, t_bench *bench)
 	else
 		return ;
 }
+
 void	rr(t_stack_library *stack_a, t_stack_library *stack_b,
 			int print_state, t_bench *bench)
 {
