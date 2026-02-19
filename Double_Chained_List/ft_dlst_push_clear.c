@@ -6,17 +6,17 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 10:37:20 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/11 14:40:18 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/19 11:55:30 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack_library	*push_back_dlst(t_stack_library *li, int x)
+t_stack_library	*push_back_dlst(t_stack_library *li)
 {
 	t_stack	*element;
 
-	element = ft_dlst_new(x);
+	element = ft_dlst_new();
 	if (stack_length(li) == 0)
 	{
 		li = malloc(sizeof(t_stack_library));
@@ -25,7 +25,7 @@ t_stack_library	*push_back_dlst(t_stack_library *li, int x)
 		li->length = 0;
 		li->begin = element;
 		li->end = element;
-	}	
+	}
 	else
 	{
 		li->end->next = element;
@@ -36,11 +36,11 @@ t_stack_library	*push_back_dlst(t_stack_library *li, int x)
 	return (li);
 }
 
-t_stack_library	*push_front_dlst(t_stack_library *li, int x)
+t_stack_library	*push_front_dlst(t_stack_library *li)
 {
 	t_stack	*element;
 
-	element = ft_dlst_new(x);
+	element = ft_dlst_new();
 	if (stack_length(li) == 0)
 	{
 		li = malloc(sizeof(t_stack_library));

@@ -50,24 +50,26 @@ To calculate it, we looked at all the possible pairs of numbers in the stack. Ea
 
 ## Instructions
 
-
+To launch the program, you must use the **make** command first to archive all files together and create the push_swap.a file. From here, you can compile using **(g)cc push_swap.a [name of function]**
 
 ## Resources
-***kbrun*** watched some of the videos of the Youtube channel [M.A. BENALLAL](https://www.youtube.com/@m.a.benallal) to learn the basics of the algorithm we used and adapted.\
+***kbrun*** watched some of the videos of the Youtube channel [M.A. BENALLAL](https://www.youtube.com/@m.a.benallal) to learn the basics of the algorithm we used and adapted.  
 I also looked at a video about [Double linked lists](https://www.youtube.com/watch?v=589GpRJ6VFo) to learn how to handle them correctly and handle them on our program.
 
 ## Algorithms justification and explanation
 
 ### Space Complexity
-**The space complexity** represent all the datas and the memory used by the algorithm. We always use the **Big O** notations to calculate the space and time complexity, which depends on the average or worst case scenario.  
+**The space complexity** represent all the memory used by the algorithm itself. We always use the **Big O** notations to calculate the space and time complexity, which depends on the average or worst case scenario.  
 *O* stands for *Order of approximation* and refers to formal or informal expressions for how accurate an approximation is in terms of the number of parameters used to construct the approximation.  
 For example, if we ever only manipulates one variable or file, the space complexity will be *O(1)*, because the program only use this one variable and doesn't create a new one or stock anything else more than this.
 
-The **bubble sort algorithm**, the equivalent of the simple algorithm, only needs one memory space to be of use, so its space complexity will always be *O(1)* even in the worst case.
+The **bubble sort algorithm**, the equivalent of the simple algorithm, only needs the allocated memory space to be of use, so its space complexity will always be *O(1)* even in the worst case.
 
-The **2nd algorithm**, equivalent to the medium algorithm uses up to... So its complexity should be at O(...) in average / worst.
+The **chunk based algorithm** we made, equivalent to the medium algorithm uses the same amount of memory and doesn't need to allocate or generate more memory for its own purpose.  
+So its complexity should be at O(1) in the best / worst situation.
 
-Finally, the **last algorithm**, equivalent to the complex algorithm, needs... So its complexity should be at O(...) in average / worst.
+Finally, the **radix algorithm**, equivalent to the complex algorithm, needs...  
+Which means its complexity should be at O(...) in average / worst.
 
 The **adaptive version** is just the selection between all of the above algorithm, so its theoretical space complexity is at best O(1) and at worst O(...)
 
@@ -76,9 +78,9 @@ The **adaptive version** is just the selection between all of the above algorith
 
 The **bubble sort algorithm** takes at best O(n) movements for small inputs or a list almost sorted, and in the worst case, like in a case where the disorder is close to 100% and / or a long-length list, will take up to O(n^2) movements.
 
-The **2nd algorithm**, depends of ...
+The **chunk based algorithm** we developed, depends of how many chunks it will creates, which is based on the square root of the n elements given, and at worst, the n times squared elements, so O(√n) at best but O(n√n) at worst.
 
-Finally, the **last algorithm**, works with a high number of inputs set (around **X** numbers to sort to begin to see its true potential)
+Finally, the **radix algorithm**, works with a high number of inputs set (around **X** numbers to sort to begin to see its true potential)
 
 ## Contributions
 

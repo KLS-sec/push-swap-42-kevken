@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:05:36 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/13 10:51:50 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/17 16:21:54 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	rra(t_stack_library *stack_a, int print_state, t_bench *bench)
 	if (print_state == 1)
 	{
 		ft_printf("rra\n");
-		bench->nb_rra += 1; // 
+		bench->nb_rra += 1;
 	}
 	else if (print_state == 0 && bench->bench_true == 1)
 		bench->nb_rra += 1;

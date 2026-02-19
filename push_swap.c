@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 12:27:40 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/11 17:26:57 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/19 11:02:52 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,24 @@ void print_list(t_stack_library *li)
 	}
 	ft_printf("\n");
 }
-int	main(void)
+int	main(int argc)
 {
 	t_stack_library	*mylist;
 	t_stack_library	*mylist_b;
-	t_bench			bench;
-	
+	t_bench			*bench;
+	int				a = 1, b = 2, c = 0;
+	float			test = 0.4933584;
+
+//	if (argc <= 2) À rajouter ici ou dans la fonction d'exec si pas assez de place
+//		return (0);
 	mylist = NULL;
 	mylist_b = NULL;
+	bench = NULL;
+	c = test * 10000;
+	ft_printf("\nTest float to int : %d\n", c);
+	ft_printf("\nTest float to int : %d.%d\n", c / 100, c % 100);
+	ft_print_error("Valeur de a : %d\nValeur de b : %d\n\n",
+	a, b); // Vérification si passage à la ligne problématique (non) + fonction réalise ce que je souhaite (oui)
 	mylist = push_back_dlst(mylist, 14);
 	print_list(mylist);
 	mylist = push_back_dlst(mylist, 5);
@@ -59,7 +69,6 @@ int	main(void)
 	mylist = push_back_dlst(mylist, -6);
 	print_list(mylist);
 	ft_printf("\n-------------------------------------\n");
-	sa(mylist, 1, bench);
 	print_list(mylist);
 	mylist = push_front_dlst(mylist, 12);
 	print_list(mylist);
@@ -67,6 +76,7 @@ int	main(void)
 	print_list(mylist);
 	mylist = push_front_dlst(mylist, -4546);
 	print_list(mylist);
+	sa(mylist, 1, bench);
 	ft_printf("\n-------------------------------------\n");
 	mylist_b = pb(mylist, mylist_b, 1, bench);
 	ft_printf("Liste B =\n");
@@ -104,7 +114,6 @@ int	main(void)
 	print_list(mylist_b);
 	ft_printf("Taille de la liste A : %d\n", stack_length(mylist));
 	ft_printf("Taille de la liste B : %d\n", stack_length(mylist_b));
-
 	return (0);
 }
 
