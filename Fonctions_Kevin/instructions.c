@@ -12,18 +12,17 @@
 
 #include "../push_swap.h"
 
-
 int	inst_detector(char **argv, t_bench *bench, int x)
 {
 	if (ft_strncmp("--simple", argv[x], 9))
-		return(1);
+		return (1);
 	if (ft_strncmp("--medium", argv[x], 9))
-		return(2);
+		return (2);
 	if (ft_strncmp("--complex", argv[x], 10))
-		return(3);
+		return (3);
 	if (ft_strncmp("--adaptive\0", argv[x], 11))
-		return(0);
-	return(0);
+		return (0);
+	return (0);
 }
 // Faire attention à ne pas executer le bench ici, il faut faire le tri d'abord
 int	inst_detector_bench(char **argv, t_bench *bench, int *x)
@@ -43,7 +42,7 @@ int	inst_detector_bench(char **argv, t_bench *bench, int *x)
 		bench->bench_true = 0;
 		stock = inst_detector(argv, bench, *x);
 	}
-	return(stock);
+	return (stock);
 }
 // Launch instructions from here or send back code
 int inst_verif(t_stack_library *lst, int argc, char **argv, t_bench *bench)

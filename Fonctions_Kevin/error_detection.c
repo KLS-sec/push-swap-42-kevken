@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_detection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
+/*   By: kle-scor <kle-scor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:02:00 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 13:05:55 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/19 19:02:11 by kle-scor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,23 @@ if i = 1 return ("error")
 if i = 2 return
 ne reagit pas a 0*/
 
-
-int character_detection(int argc, char **argv, int pos)
+int	character_detection(int argc, char **argv, int pos)
 {
-	int k;
-	int j;
+	int	k;
+	int	j;
 
 	k = 0;
 	j = pos;
 	while (j < argc)
 	{
-		while(argv[j][k] != '\0')
+		while (argv[j][k] != '\0')
 		{
 			if (k == 0 && (argv[j][k] == '-' || argv[j][k] == '+'))
 				k++;
 			if ((argv[j][k] < '0' || argv[1][k] > '9')
-			&& argv[j][k+1] != '\0')
+			&& argv[j][k + 1] != '\0')
 				return (1);
-			if (argv[j][k+1] != '\0')
+			if (argv[j][k + 1] != '\0')
 				k++;
 		}
 		j++;
@@ -45,7 +44,7 @@ int character_detection(int argc, char **argv, int pos)
 
 unsigned int	ft_atoi_minmax(const char *nptr)
 {
-	int	i;
+	int				i;
 	unsigned int	value;
 
 	i = 0;
@@ -68,56 +67,58 @@ unsigned int	ft_atoi_minmax(const char *nptr)
 //int max 2147483647
 //int min -2147483648
 //unsigned intmax 4294967295
-int max_min(int argc, char **argv, int j)
+//detetct if the input go beyond int min of max
+int	max_min(int argc, char **argv, int j)
 {
-	int i;
-	unsigned int comp;
+	int				i;
+	unsigned int	comp;
 
 	i = 0;
 	while (j < argc)
 	{
-		while(argv[j][i] != '\0') //fin
+		while (argv[j][i] != '\0')
 			i++;
-		if ((argv[j][0] == '-' && i > 11) || (argv[j][0] != '-' && i > 10))	//kill if too big
-			return(1);
+		if ((argv[j][0] == '-' && i > 11) || (argv[j][0] != '-' && i > 10))
+			return (1);
 		if ((argv[j][0] == '-' && argv[j][1] > '2' && i == 11)
-			|| (argv[j][0] > '2' && i == 10))	//kill if too big, avoid overloading int
-			return(1);
+			|| (argv[j][0] > '2' && i == 10))
+			return (1);
 		if ((argv[j][0] == '-' && i == 11) || (argv[j][0] != '-' && i == 10))
-			{
-				comp = ft_atoi_minmax(argv[j]);
-				if (argv[j][0] == '-' && comp > 2147483648)
-					return (1);
-				if (argv[j][0] != '-' && comp > 2147483647)
-					return (1);
-			}
+		{
+			comp = ft_atoi_minmax(argv[j]);
+			if (argv[j][0] == '-' && comp > 2147483648)
+				return (1);
+			if (argv[j][0] != '-' && comp > 2147483647)
+				return (1);
+		}
 		i = 0;
 		j++;
 	}
 	return (0);
 }
 
-int duplicate_detector(t_stack *start)
+int	duplicate_detector(t_stack *start)
 {
-	t_stack *marker;
-	t_stack *searcher;
-	
+	t_stack	*marker;
+	t_stack	*searcher;
+
 	marker = start;
 	searcher = marker -> next;
-	while(marker != NULL)
+	while (marker != NULL)
 	{
-		while(searcher != NULL)
+		while (searcher != NULL)
 		{
-			if ((*searcher) . content == marker -> content)
-				return(1);
+			if ((*searcher).content == marker -> content)
+				return (1);
 			searcher = searcher -> next;
 		}
 		marker = marker -> next;
 		searcher = marker -> next;
 	}
-	return(0);
+	return (0);
 }
 
 //trillean = 0 tout vas bien
 //trillean = 1 doit retourner erreur
-//trillean = 2 interuption, ne retourne rien -->> remplacer par exit(EXIT_FAILURE)
+//trillean = 2 interuption :
+//ne retourne rien -->> remplacer par exit(EXIT_FAILURE)
