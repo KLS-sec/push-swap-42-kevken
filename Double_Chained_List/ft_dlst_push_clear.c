@@ -49,7 +49,7 @@ t_stack_library	*push_front_dlst(t_stack_library *li)
 		li->length = 0;
 		li->begin = element;
 		li->end = element;
-	}	
+	}
 	else
 	{
 		li->begin->back = element;
@@ -63,7 +63,7 @@ t_stack_library	*push_front_dlst(t_stack_library *li)
 t_stack_library	*pop_front_dlst(t_stack_library *li)
 {
 	t_stack	*del;
-	
+
 	if (li == NULL)
 		return (NULL);
 	if (li->begin == li->end)
@@ -88,7 +88,7 @@ t_stack_library	*pop_front_dlst(t_stack_library *li)
 t_stack_library	*pop_back_dlst(t_stack_library *li)
 {
 	t_stack	*del;
-	
+
 	if (li == NULL)
 		return (NULL);
 	if (li->begin == li->end)

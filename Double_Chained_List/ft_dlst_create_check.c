@@ -26,7 +26,7 @@ t_stack	*ft_dlst_new(void)
 	return (new);
 }
 
-int	stack_length(t_stack_library *li) 
+int	stack_length(t_stack_library *li)
 {
 	if (li == NULL)
 		return (0);
@@ -48,6 +48,7 @@ int	last_stack(t_stack_library *li)
 		return (0);
 	return (li->end->content);
 }
+
 t_stack_library	*full_list(t_stack_library *li, int argc, int pos)
 {
 	if (li == NULL)
