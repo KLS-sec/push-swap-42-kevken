@@ -1,121 +1,112 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   medium_sorting_Chunk-based.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kle-scor <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/20 16:00:01 by kle-scor          #+#    #+#             */
+/*   Updated: 2026/02/20 16:02:53 by kle-scor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
+//Two functions in Medium_sorting_support.c
+//Undefined behavior if any abnormal input passed the securities
+
 //Square root (rounded down) of n
-int square_root(int n) //calcul racine de n ou va la valeur la valeur en dessou la plus proche
+int	square_root(int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	while(((i+1)*(i+1)) <= n)
+	while (((i + 1) * (i + 1)) <= n)
 		i++;
-	return(i);
+	return (i);
 }
 
-//search for values under chunk and count the moves needed to reach it
-int medium_search(t_stack_library *lib_a, int chunk)
+//Search for values under chunk return the count needed to reach it
+int	medium_search(t_stack_library *lib_a, int chunk)
 {
-	t_stack *head;
-	t_stack *tail;
-	int i;
+	t_stack	*head;
+	t_stack	*tail;
+	int		i;
 
-	head = lib_a -> begin;
+	head = lib_a -> begin -> next;
 	tail = lib_a -> end;
 	i = 1;
-	if(head -> order <= chunk)
+	if (lib_a -> begin -> order <= chunk)
 		return (0);
-	head = head->next;
-	while(head -> order > chunk && tail -> order > chunk)
+	while (head -> order > chunk && tail -> order > chunk)
 	{
 		head = head -> next;
 		tail = tail -> back;
 		i++;
 	}
-	if(tail -> order <= chunk)
+	if (tail -> order <= chunk)
 		i *= -1;
-	return(i); //return le nb de roll a faire pour amener l element la ou il faut
+	return (i);
 }
 
-//take medium_search input as i and use it to move the targeted on the top of the stack
-void roller_a(int i, t_stack_library *lib_a, t_bench *bench) //pr regler le pb creer une struc mettre des val dedans? je met 1 en attendant, on vas creer une fonction pr ca
+//Search the value to sent back to a return the count needed to reach it
+int	medium_return(t_stack_library *lib_b, int j)
 {
-	while(i < 0)
+	t_stack	*head;
+	t_stack	*tail;
+	int		i;
+
+	head = lib_b -> begin -> next;
+	tail = lib_b -> end;
+	i = 1;
+	if (lib_b -> begin -> order == j)
+		return (0);
+	while (head -> order < j && tail -> order < j && i <= lib_b -> length)
 	{
-		rra(lib_a, 1, bench);
+		head = head -> next;
+		tail = tail -> back;
 		i++;
 	}
-		while(i > 0)
-	{
-		ra(lib_a, 1, bench);
-		i--;
-	}
+	if (tail -> order == j)
+		i *= -1;
+	return (i);
 }
 
-void roller_b(int i, t_stack_library *lib_b, t_bench *bench) //pr regler le pb creer une struc mettre des val dedans? je met 1 en attendant, on vas creer une fonction pr ca
+//Small efficiency enhancer that reverse top 2 struct of b if advantageous
+//int *j to spare a line in medium_algorithm
+void	pre_organiser(t_stack_library *lib_b, int print_state,
+	t_bench *bench, int *j)
 {
-	while(i < 0)
-	{
-		rrb(lib_b, 1, bench);
-		i++;
-	}
-		while(i > 0)
-	{
-		rb(lib_b, 1, bench);
-		i--;
-	}
-}
-
-//small efficiency enhancer that reverse top 2 struct of b if advantageous
-void pre_organiser (t_stack_library *lib_b, int print_state, t_bench *bench, int *j)
-{
-	if(lib_b -> order < lib_b -> next -> order && lib_b -> length > 1)
+	if (lib_b -> order < lib_b -> next -> order && lib_b -> length > 1)
 		sb(lib_b, print_state, *bench);
-	j++; //to spare a line in the main fonc
+	j++;
 }
 
-
-
-/* 
-take as argunent
-	lib_a :
-	lib_b :
-	bench :
-	print_state :
-return ..., or -1 in case of error
-fail if
-side effect : lib_a and lib_be will be modified
-undefined behaviour if argument are not properly validated before calling
-*/
-int medium_algorythm(t_stack_library *lib_a, t_stack_library *lib_b,
+void	medium_algorithm(t_stack_library *lib_a, t_stack_library *lib_b,
 	t_bench *bench, int print_state)
 {
-	int chunk;
-	int i;
-	int j;
+	int	chunk;
+	int	i;
+	int	j;
 
 	chunk = square_root(lib_a -> length);
 	i = 1;
 	j = 0;
-	while(lib_a -> begin != NULL)
+	while (lib_a -> begin != NULL)
 	{
-		while(j < (chunk/i) && lib_a -> begin != NULL) //fait un chunk
+		while (j < (chunk / i) && lib_a -> begin != NULL)
 		{
-		//double chercheur debut/fin pour trouver le plus proche
-		//mouvement puis push b
-		roller_a(medium_search(lib_a, chunk), lib_a, bench); //medium_search return le nombre de mouvement a faire pour roller_a
-		lib_b = pb(lib_a, lib_b, print_state, bench);
-		pre_organiser (lib_b, print_state, bench, j); //si j ne marche pas ou besoins de l enlever alors faire j = j + pre_organiser et faire de lui un int avec return 1
+			roller_a(medium_search(lib_a, chunk), lib_a, bench);
+			lib_b = pb(lib_a, lib_b, print_state, bench);
+			pre_organiser (lib_b, print_state, bench, j);
 		}
-		//recommence jusqu a avoir fait chunk fois l action pb
-		//fin du while
-		//change chunk et n--
-		chunk = ++i * chunk; //passe au chunk suivant
+		chunk = ++i * chunk;
 		j = 0;
 	}
-		while(j < chunk && lib_b -> begin != NULL) //le retour de B vers A
-		{
-		roller_b(medium_search(lib_b, j), lib_b, bench); //vas chercher j, donner les instruction et le lancer vers A --->>> verifier les < et <= de partout
+	j = lib_b -> length - 1;
+	while (j >= 0 && lib_b -> begin != NULL)
+	{
+		roller_b(medium_return (lib_b, j--), lib_b, bench);
 		lib_a = pa(lib_a, lib_b, print_state, bench);
-		j++;
-		}
-	return();
+	}
 }
