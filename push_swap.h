@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 12:39:17 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 12:14:50 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/19 19:59:46 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_stack_library
 typedef struct s_bench
 {
 	float			disorder;
+	int				argc;
 	int				dis_percent;
 	int				total_ops;
 	int				bench_true;
@@ -64,16 +65,18 @@ t_stack_library	*pb(t_stack_library *stack_a, t_stack_library *stack_b,
 t_stack_library	*pa(t_stack_library *stack_a, t_stack_library *stack_b,
 					int print_state, t_bench *bench);
 t_bench			*bench_calculator(t_stack_library *stack_a, t_bench *bench);
-int 			duplicate_detector(t_stack *start);
+int				duplicate_detector(t_stack *start);
 int				stack_length(t_stack_library *li);
 int				first_stack(t_stack_library *li);
 int				last_stack(t_stack_library *li);
-int				inst_detector (char **argv, t_bench *bench, int x);
-int				inst_detector_bench (char **argv, t_bench *bench, int *x);
-int				inst_verif (t_stack_library *lst, int argc,
+int				inst_detector(char **argv, t_bench *bench, int x);
+int				inst_detector_bench(char **argv, t_bench *bench, int *x);
+int				inst_verif(t_stack_library *lst, int argc,
 					char **argv, t_bench *bench);
 int				character_detection(int argc, char **argv, int pos);
 int				max_min(int argc, char **argv, int j);
+void			launcher_bench(t_stack_library *stack_a,
+					t_stack_library *stack_b, char **argv, t_bench *bench);
 void			bench_strategy(t_stack_library *stack_a,
 					t_bench *bench, char **argv);
 void			rrr(t_stack_library *stack_a, t_stack_library *stack_b,
@@ -88,14 +91,14 @@ void			ss(t_stack_library *stack_a, t_stack_library *stack_b,
 					int print_state, t_bench *bench);
 void			sb(t_stack_library *stack_b, int print_state, t_bench *bench);
 void			sa(t_stack_library *stack_a, int print_state, t_bench *bench);
-void			sort_three(t_stack_library *stack_a, t_bench *bench); // Vérifier s'il est nécessaire
+void			sort_three(t_stack_library *stack_a, t_bench *bench);
 void			sort_five_first(t_stack_library *stack_a,
-					t_stack_library *stack_b, t_bench *bench); // Vérifier s'il est nécessaire
+					t_stack_library *stack_b, t_bench *bench);
 void			sort_five_second(t_stack_library *stack_a,
-					t_stack_library *stack_b, t_bench *bench); // Vérifier s'il est nécessaire
+					t_stack_library *stack_b, t_bench *bench);
 void			bubble_sort(t_stack_library *stack_a,
 					t_stack_library *stack_b, t_bench *bench);
-void			bench_launcher (char **argv, t_bench *bench);
+void			bench_launcher(char **argv, t_bench *bench);
 float			disorder_calculator(t_stack_library *lst);
 
 #endif

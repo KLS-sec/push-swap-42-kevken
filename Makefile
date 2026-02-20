@@ -66,21 +66,8 @@ SRC_ERR = ft_print_error/ft_print_error.c \
 SRC_PRINTF = ft_printf/ft_printf.c \
              ft_printf/ft_printf_utils.c
 
-# Bench file
-SRC_BENCH = Bench_Codes/bench_count.c
-
-# Launcher files
-SRC_LNCHR = Launcher/error.detection.c \
-            Launcher/instructions.c \
-            Launcher/stack_normalizer
-
-# Sorting files
-SRC_SORT = Sorting_Stacks/complex_sorting_radix.c \
-           Sorting_Stacks/medium_sorting_Chunk-based.c \
-           Sorting_Stacks/Sort_of_bubulle.sort.c
-
 # Combine all sources
-SRC = $(SRC_MAIN) $(SRC_DLST) $(SRC_OPS) $(SRC_ERR) $(SRC_LIBFT) $(SRC_PRINTF) $(SRC_BENCH) $(SRC_LNCHR) $(SRC_SORT)
+SRC = $(SRC_MAIN) $(SRC_DLST) $(SRC_OPS) $(SRC_ERR) $(SRC_LIBFT) $(SRC_PRINTF)
 
 #SRC_BONUS = (Si jamais on se motive pour faire le bonus)
 
