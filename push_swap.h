@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 12:39:17 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 19:59:46 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 12:46:07 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_bench
 	int				nb_rrr;
 }					t_bench;
 
-t_stack			*ft_dlst_new(void);
+t_bench			*bench_calculator(t_stack_library *stack_a, t_bench *bench);
 t_stack_library	*full_list(t_stack_library *li, int argc, int pos);
 t_stack_library	*push_back_dlst(t_stack_library *li);
 t_stack_library	*push_front_dlst(t_stack_library *li);
@@ -64,17 +64,38 @@ t_stack_library	*pb(t_stack_library *stack_a, t_stack_library *stack_b,
 					int print_state, t_bench *bench);
 t_stack_library	*pa(t_stack_library *stack_a, t_stack_library *stack_b,
 					int print_state, t_bench *bench);
-t_bench			*bench_calculator(t_stack_library *stack_a, t_bench *bench);
+t_stack_library	*stack_filler(t_stack_library *stack,
+					int pos, int argc, char **argv);
+t_stack			*ft_dlst_new(void);
+float			disorder_calculator(t_stack_library *lst);
+unsigned int	ft_atoi_minmax(const char *nptr);
+int				square_root(int n);
+int				medium_search(t_stack_library *lib_a, int chunk);
+int				disorder_check(t_stack_library *lib_a);
+int				cplx_search(t_stack_library *lib_a, int n);
+int				radix(t_stack_library *lib_a, t_stack_library *lib_b,
+					t_bench *bench, int print_state);
 int				duplicate_detector(t_stack *start);
 int				stack_length(t_stack_library *li);
-int				first_stack(t_stack_library *li);
-int				last_stack(t_stack_library *li);
+int				first_stack(t_stack_library *li); // To be removed ?
+int				last_stack(t_stack_library *li); // To be removed ?
 int				inst_detector(char **argv, t_bench *bench, int x);
 int				inst_detector_bench(char **argv, t_bench *bench, int *x);
 int				inst_verif(t_stack_library *lst, int argc,
 					char **argv, t_bench *bench);
 int				character_detection(int argc, char **argv, int pos);
 int				max_min(int argc, char **argv, int j);
+int				medium_algorithm(t_stack_library *lib_a,
+					t_stack_library *lib_b, t_bench *bench, int print_state);
+void			pre_organiser(t_stack_library *lib_b, int print_state,
+					t_bench *bench, int *j);
+void			roller_a(int i, t_stack_library *lib_a, t_bench *bench);
+void			roller_b(int i, t_stack_library *lib_b, t_bench *bench);
+void			stack_normalizer(t_stack *lst);
+void			inst_launcher_bench(t_stack_library *stack_a,
+					t_stack_library *stack_b, char **argv, t_bench *bench);
+void			inst_launcher(t_stack_library *stack_a,
+					t_stack_library *stack_b, char **argv, t_bench *bench);
 void			launcher_bench(t_stack_library *stack_a,
 					t_stack_library *stack_b, char **argv, t_bench *bench);
 void			bench_strategy(t_stack_library *stack_a,
@@ -99,6 +120,5 @@ void			sort_five_second(t_stack_library *stack_a,
 void			bubble_sort(t_stack_library *stack_a,
 					t_stack_library *stack_b, t_bench *bench);
 void			bench_launcher(char **argv, t_bench *bench);
-float			disorder_calculator(t_stack_library *lst);
 
 #endif
