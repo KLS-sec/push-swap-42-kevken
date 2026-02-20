@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 //Square root (rounded down) of n
 int square_root(int n) //calcul racine de n ou va la valeur la valeur en dessou la plus proche

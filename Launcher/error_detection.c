@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error_detection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kle-scor <kle-scor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:02:00 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 19:02:11 by kle-scor         ###   ########.fr       */
+/*   Updated: 2026/02/20 18:01:38 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-/*i = error_detection
-if i = 1 return ("error")
-if i = 2 return
-ne reagit pas a 0*/
 
+// Search for a non-numbered character and return an error value
 int	character_detection(int argc, char **argv, int pos)
 {
 	int	k;
@@ -42,6 +39,7 @@ int	character_detection(int argc, char **argv, int pos)
 	return (k);
 }
 
+// Transform the number in array to an int
 unsigned int	ft_atoi_minmax(const char *nptr)
 {
 	int				i;
@@ -64,10 +62,7 @@ unsigned int	ft_atoi_minmax(const char *nptr)
 	return (value);
 }
 
-//int max 2147483647
-//int min -2147483648
-//unsigned intmax 4294967295
-//detetct if the input go beyond int min of max
+// Detetct if the input go beyond int min or max
 int	max_min(int argc, char **argv, int j)
 {
 	int				i;
@@ -97,6 +92,7 @@ int	max_min(int argc, char **argv, int j)
 	return (0);
 }
 
+// Look for any duplicate on the starting stack
 int	duplicate_detector(t_stack *start)
 {
 	t_stack	*marker;
@@ -117,8 +113,3 @@ int	duplicate_detector(t_stack *start)
 	}
 	return (0);
 }
-
-//trillean = 0 tout vas bien
-//trillean = 1 doit retourner erreur
-//trillean = 2 interuption :
-//ne retourne rien -->> remplacer par exit(EXIT_FAILURE)

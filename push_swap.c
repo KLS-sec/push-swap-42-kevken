@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 12:27:40 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 11:02:52 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 17:19:00 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void print_list(t_stack_library *li)
 	}
 	ft_printf("\n");
 }
-int	main(int argc)
+
+int	main(void)
 {
 	t_stack_library	*mylist;
 	t_stack_library	*mylist_b;

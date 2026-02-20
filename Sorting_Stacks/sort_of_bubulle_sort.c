@@ -1,45 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Sort_of_bubulle_sort.c                             :+:      :+:    :+:   */
+/*   sort_of_bubulle_sort.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 11:06:23 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 17:04:49 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 18:17:20 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-// Première idée : Inverser la position du "stop" et de départ, le 1er élément sera le début du comparateur et le dernier élément le stop
-// IMPORTANT : Implémenter le print_state partout au lieu de mettre "1" ou "0" manuellement pour les opérations utilisées ici
 
-/* Here as reference, not usable like this
-void	normal_bubble_sort(int *tab, int taille)
-{
-	int temp;
-	int i;
-	int j;
-
-	i = 0;
-	while (i < taille - 1)
-	{
-		j = taille - 1;
-		while (j > i)
-		{
-			if (tab[j] < tab[j - 1])
-			{
-				temp = tab[j];
-				tab[j] = tab[j - 1];
-				tab[j - 1] = temp;
-			}
-			j--;
-		}
-		i++;
-	}
-}
- */
-
+// Sort 3 numbers
 void	sort_three(t_stack_library *stack_a, t_bench *bench)
 {
 	if (stack_a->begin->order > stack_a->begin->next->order
@@ -59,6 +32,7 @@ void	sort_three(t_stack_library *stack_a, t_bench *bench)
 	}
 }
 
+// First part of code sorting 5 numbers
 void	sort_five_first(t_stack_library *stack_a, t_stack_library *stack_b,
 						t_bench *bench)
 {
@@ -84,8 +58,12 @@ void	sort_five_first(t_stack_library *stack_a, t_stack_library *stack_b,
 	stack_b = pb(stack_a, stack_b, 1, bench);
 	sort_five_second (stack_a, stack_b, bench);
 }
-// Doute sur l'usage, dois-je envoyer un pointeur, un pointeur de pointeur,
-// ou "return" une variable à la fin ? À checker
+
+/* Doute sur l'usage, dois-je envoyer un pointeur, un pointeur de pointeur,
+ou "return" une variable à la fin ? À checker */
+
+
+// Second part of code sorting 5 numbers
 void	sort_five_second(t_stack_library *stack_a,
 							t_stack_library *stack_b, t_bench *bench)
 {
@@ -114,6 +92,7 @@ void	sort_five_second(t_stack_library *stack_a,
 	pa(stack_a, stack_b, 1, bench);
 }
 
+// Simple algorithm of sorting, sort as many given
 void	bubble_sort(t_stack_library *stack_a, t_stack_library *stack_b,
 			t_bench *bench)
 {

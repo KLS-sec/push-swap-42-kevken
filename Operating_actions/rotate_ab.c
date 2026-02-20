@@ -6,15 +6,17 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:05:34 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/17 16:22:37 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 18:12:14 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 // Here we are implementing "ra", "rb" and "rr" (first become last)
-// Vérifier s'il y a besoin de renvoyer quelque chose quand on exécute
-// une des actions
+/* Vérifier s'il y a besoin de renvoyer quelque chose quand on execute
+une des actions */
+
+// First block from stack_a becomes the last one
 void	ra(t_stack_library *stack_a, int print_state, t_bench *bench)
 {
 	if (stack_length(stack_a) <= 1)
@@ -26,12 +28,12 @@ void	ra(t_stack_library *stack_a, int print_state, t_bench *bench)
 		ft_printf("ra\n");
 		bench->nb_ra += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_ra += 1;
-	else
-		return ;
+	return ;
 }
 
+// First block from stack_b becomes the last one
 void	rb(t_stack_library *stack_b, int print_state, t_bench *bench)
 {
 	if (stack_length(stack_b) <= 1)
@@ -43,12 +45,12 @@ void	rb(t_stack_library *stack_b, int print_state, t_bench *bench)
 		ft_printf("rb\n");
 		bench->nb_rb += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_rb += 1;
-	else
-		return ;
+	return ;
 }
 
+// Firsts blocks from both stacks become the lasts ones
 void	rr(t_stack_library *stack_a, t_stack_library *stack_b,
 			int print_state, t_bench *bench)
 {
@@ -59,8 +61,7 @@ void	rr(t_stack_library *stack_a, t_stack_library *stack_b,
 		ft_printf("rr\n");
 		bench->nb_rr += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_rr += 1;
-	else
-		return ;
+	return ;
 }

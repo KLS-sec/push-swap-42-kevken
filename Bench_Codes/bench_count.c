@@ -6,12 +6,13 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 15:30:02 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 16:45:50 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 17:44:41 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+// Calculate disorder BEFORE sorting and return its value
 float	disorder_calculator(t_stack_library *lst)
 {
 	t_stack	*searcher;
@@ -30,12 +31,13 @@ float	disorder_calculator(t_stack_library *lst)
 	return (i / (float)lst -> length);
 }
 
-void	bench_strategy(t_stack_library *stack_a, t_bench *bench, char **argv)
+// Choose and print which strategy was used based on disorder
+void	bench_strategy(t_bench *bench, char **argv)
 {
 	int	x;
 
 	x = 0;
-	if (inst_detector_bench(argv, bench, x) == 0 && bench->bench_true == 1)
+	if (inst_detector_bench(argv, bench, &x) == 0 && bench->bench_true == 1)
 	{
 		if (bench->disorder < 0.2)
 			ft_print_error("Strategy : Adaptive / O(n2)");
@@ -44,19 +46,20 @@ void	bench_strategy(t_stack_library *stack_a, t_bench *bench, char **argv)
 		else if (bench->disorder > 0.5)
 			ft_print_error("Strategy : Adaptive / O(n log n)");
 	}
-	else if (inst_detector_bench(argv, bench, x) == 1
+	else if (inst_detector_bench(argv, bench, &x) == 1
 		&& bench->bench_true == 1)
 		ft_print_error("Strategy : Simple / O(n2)");
-	else if (inst_detector_bench(argv, bench, x) == 2
+	else if (inst_detector_bench(argv, bench, &x) == 2
 		&& bench->bench_true == 1)
 		ft_print_error("Strategy : Medium / O(n√n)");
-	else if (inst_detector_bench(argv, bench, x) == 3
+	else if (inst_detector_bench(argv, bench, &x) == 3
 		&& bench->bench_true == 1)
 		ft_print_error("Strategy : Complex / O(n log n)");
-	bench = bench_calculator_error(stack_a, bench);
+	bench = bench_calculator(bench);
 }
 
-t_bench	*bench_calculator(t_stack_library *stack_a, t_bench *bench)
+// Calculate and print all operations / disorder
+t_bench	*bench_calculator(t_bench *bench)
 {
 	bench->total_ops = bench->nb_sa + bench->nb_sb + bench->nb_ss
 		+ bench->nb_ra + bench->nb_rb + bench->nb_rr + bench->nb_rra

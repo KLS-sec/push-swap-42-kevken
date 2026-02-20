@@ -6,15 +6,15 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:05:32 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/13 11:16:47 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 18:14:40 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// Ici on développe "sa", "sb", "ss", "pa" et "pb"
-// Rajouter le booleen pour le checker, si assez de place
-// (et qu'on fait le bonus)
+// Here we implemented "sa", "sb", "ss", "pa" et "pb"
+
+// Switch the first and second block from stack_a
 void	sa(t_stack_library *stack_a, int print_state, t_bench *bench)
 {
 	t_stack	*swap_first;
@@ -31,12 +31,12 @@ void	sa(t_stack_library *stack_a, int print_state, t_bench *bench)
 		ft_printf("sa\n");
 		bench->nb_sa += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_sa += 1;
-	else
-		return ;
+	return ;
 }
 
+// Switch the first and second block from stack_b
 void	sb(t_stack_library *stack_b, int print_state, t_bench *bench)
 {
 	t_stack	*swap_first;
@@ -53,12 +53,12 @@ void	sb(t_stack_library *stack_b, int print_state, t_bench *bench)
 		ft_printf("sb\n");
 		bench->nb_sb += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_sb += 1;
-	else
-		return ;
+	return ;
 }
 
+// Switch the first and second block from both stacks
 void	ss(t_stack_library *stack_a, t_stack_library *stack_b,
 			int print_state, t_bench *bench)
 {
@@ -69,14 +69,15 @@ void	ss(t_stack_library *stack_a, t_stack_library *stack_b,
 		ft_printf("ss\n");
 		bench->nb_ss += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_ss += 1;
-	else
-		return ;
+	return ;
 }
 
-// Voir si envoyer un pointeur de pointeur "**stack_a"
-// pourrais retransformer la fonction en void
+/* Voir si envoyer un pointeur de pointeur "**stack_a"
+pourrais retransformer la fonction en void */
+
+// Transfer a block from stack_b to stack_a
 t_stack_library	*pa(t_stack_library *stack_a, t_stack_library *stack_b,
 					int print_state, t_bench *bench)
 {
@@ -90,17 +91,18 @@ t_stack_library	*pa(t_stack_library *stack_a, t_stack_library *stack_b,
 		bench->nb_pa += 1;
 		return (stack_a);
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 	{
 		bench->nb_pa += 1;
 		return (stack_a);
 	}
-	else
-		return (stack_a);
+	return (stack_a);
 }
 
-// Voir si envoyer un pointeur de pointeur "**stack_b"
-// pourrais retransformer la fonction en void
+/* Voir si envoyer un pointeur de pointeur "**stack_a"
+pourrais retransformer la fonction en void */
+
+// Transfer a block from stack_a to stack_b
 t_stack_library	*pb(t_stack_library *stack_a,
 	t_stack_library *stack_b, int print_state, t_bench *bench)
 {
@@ -114,11 +116,10 @@ t_stack_library	*pb(t_stack_library *stack_a,
 		bench->nb_pb += 1;
 		return (stack_b);
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 	{
 		bench->nb_pb += 1;
 		return (stack_b);
 	}
-	else
-		return (stack_b);
+	return (stack_b);
 }

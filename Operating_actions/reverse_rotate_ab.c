@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:05:36 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/17 16:21:54 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 18:11:13 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 // Here we are implementing "rra", "rrb" and "rrr" (last become first)
 
+// Last block from stack_a becomes the first one
 void	rra(t_stack_library *stack_a, int print_state, t_bench *bench)
 {
 	if (stack_length(stack_a) <= 1)
@@ -25,12 +26,12 @@ void	rra(t_stack_library *stack_a, int print_state, t_bench *bench)
 		ft_printf("rra\n");
 		bench->nb_rra += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_rra += 1;
-	else
-		return ;
+	return ;
 }
 
+// Last block from stack_b becomes the first one
 void	rrb(t_stack_library *stack_b, int print_state, t_bench *bench)
 {
 	if (stack_length(stack_b) <= 1)
@@ -42,12 +43,12 @@ void	rrb(t_stack_library *stack_b, int print_state, t_bench *bench)
 		ft_printf("rrb\n");
 		bench->nb_rrb += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_rrb += 1;
-	else
-		return ;
+	return ;
 }
 
+// Lasts blocks from both stacks become the firsts ones
 void	rrr(t_stack_library *stack_a, t_stack_library *stack_b,
 			int print_state, t_bench *bench)
 {
@@ -58,8 +59,7 @@ void	rrr(t_stack_library *stack_a, t_stack_library *stack_b,
 		ft_printf("rrr\n");
 		bench->nb_rrr += 1;
 	}
-	else if (print_state == 0 && bench->bench_true == 1)
+	else if (print_state == 0)
 		bench->nb_rrr += 1;
-	else
-		return ;
+	return ;
 }

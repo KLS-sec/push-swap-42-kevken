@@ -6,12 +6,13 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 11:07:34 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 12:03:45 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 17:48:32 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+// Create a t_stack block for our stack (a or b)
 t_stack	*ft_dlst_new(void)
 {
 	t_stack	*new;
@@ -26,6 +27,7 @@ t_stack	*ft_dlst_new(void)
 	return (new);
 }
 
+// Measure the size of the library of our stack
 int	stack_length(t_stack_library *li)
 {
 	if (li == NULL)
@@ -33,29 +35,14 @@ int	stack_length(t_stack_library *li)
 	return (li->length);
 }
 
-// Probablement inutile
-int	first_stack(t_stack_library *li)
-{
-	if (li == NULL)
-		return (0);
-	return (li->begin->content);
-}
-
-// Probablement inutile
-int	last_stack(t_stack_library *li)
-{
-	if (li == NULL)
-		return (0);
-	return (li->end->content);
-}
-
+// Create the stack depending on argc and type of arguments
 t_stack_library	*full_list(t_stack_library *li, int argc, int pos)
 {
 	if (li == NULL)
 		return (NULL);
 	while (pos <= argc)
 	{
-		li = push_front_dlst(li);
+		li = push_front_dlst(li, 0);
 	}
 	return (li);
 }

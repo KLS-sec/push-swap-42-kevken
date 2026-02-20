@@ -6,17 +6,19 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 10:37:20 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 11:55:30 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 17:55:57 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack_library	*push_back_dlst(t_stack_library *li)
+// Create and allocate a block of t_stack at the end of the list
+t_stack_library	*push_back_dlst(t_stack_library *li, int content)
 {
 	t_stack	*element;
 
 	element = ft_dlst_new();
+	element->content = content;
 	if (stack_length(li) == 0)
 	{
 		li = malloc(sizeof(t_stack_library));
@@ -36,11 +38,14 @@ t_stack_library	*push_back_dlst(t_stack_library *li)
 	return (li);
 }
 
-t_stack_library	*push_front_dlst(t_stack_library *li)
+
+// Create and allocate a block of t_stack at the beginning of the list
+t_stack_library	*push_front_dlst(t_stack_library *li, int content)
 {
 	t_stack	*element;
 
 	element = ft_dlst_new();
+	element->content = content;
 	if (stack_length(li) == 0)
 	{
 		li = malloc(sizeof(t_stack_library));
@@ -60,6 +65,7 @@ t_stack_library	*push_front_dlst(t_stack_library *li)
 	return (li);
 }
 
+// Delete and free a block of t_stack at the beginning of the list
 t_stack_library	*pop_front_dlst(t_stack_library *li)
 {
 	t_stack	*del;
@@ -85,6 +91,7 @@ t_stack_library	*pop_front_dlst(t_stack_library *li)
 	return (li);
 }
 
+// Delete and free a block of t_stack at the end of the list
 t_stack_library	*pop_back_dlst(t_stack_library *li)
 {
 	t_stack	*del;
@@ -110,6 +117,7 @@ t_stack_library	*pop_back_dlst(t_stack_library *li)
 	return (li);
 }
 
+// Delete the complete list 
 t_stack_library	*clear_dlst(t_stack_library *li)
 {
 	if (li == NULL)

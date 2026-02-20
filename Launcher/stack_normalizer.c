@@ -6,12 +6,13 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:04:51 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/19 13:16:28 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/20 18:08:22 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+// Normalize and order the stack
 void	stack_normalizer(t_stack *lst)
 {
 	t_stack	*marker;
@@ -38,6 +39,7 @@ void	stack_normalizer(t_stack *lst)
 	}
 }
 
+// Fill the allocated blocks with the argv given by the user
 t_stack_library	*stack_filler(t_stack_library *stack,
 	int pos, int argc, char **argv)
 {
@@ -52,4 +54,3 @@ t_stack_library	*stack_filler(t_stack_library *stack,
 	}
 	return (stack);
 }
-//input i est le point depart de lecture

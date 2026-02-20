@@ -50,6 +50,7 @@ To calculate it, we looked at all the possible pairs of numbers in the stack. Ea
 
 ## Instructions
 
+***TO COMPLETE / MODIFY***  
 To launch the program, you must use the **make** command first to archive all files together and create the push_swap.a file. From here, you can compile using **(g)cc push_swap.a [name of function]**
 
 ## Resources
@@ -57,6 +58,9 @@ To launch the program, you must use the **make** command first to archive all fi
 I also looked at a video about [Double linked lists](https://www.youtube.com/watch?v=589GpRJ6VFo) to learn how to handle them correctly and handle them on our program.
 
 ## Algorithms justification and explanation
+
+***TO DO / MODIFY***  
+#### Basically what is bubble sort, chunk sort, radix, what are their functions and why did we choose them over the others ?
 
 ### Space Complexity
 **The space complexity** represent all the memory used by the algorithm itself. We always use the **Big O** notations to calculate the space and time complexity, which depends on the average or worst case scenario.  
@@ -68,6 +72,7 @@ The **bubble sort algorithm**, the equivalent of the simple algorithm, only need
 The **chunk based algorithm** we made, equivalent to the medium algorithm uses the same amount of memory and doesn't need to allocate or generate more memory for its own purpose.  
 So its complexity should be at O(1) in the best / worst situation.
 
+***TO DO / MODIFY***  
 Finally, the **radix algorithm**, equivalent to the complex algorithm, needs...  
 Which means its complexity should be at O(...) in average / worst.
 
@@ -84,6 +89,6 @@ Finally, the **radix algorithm**, works with a high number of inputs set (around
 
 ## Contributions
 
-**kbrun** contributed by creating and completing most of this README.md, the Makefile, creating the double linked stack and applying all operations to them, implementing the simple *bubble sort algorithm*, making the basics for the bench and integrating it to the program and to all functions, testing gradually all operations and functions made, thus modifiying ft_printf to ft_print_error to display on the standard error the result of the bench...
+**kbrun** contributed by creating and completing his part of this README.md, did the Makefile, creating the double linked stack and applying all operations to them (ra, rb, rr...), implementing the simple *bubble sort algorithm*, making the basics for the bench and integrating it to the program and to all functions, modified ft_printf to ft_print_error to display on the standard error the result of the bench and finally fused / linked the functions altogether.
 
 **kle-scor** contributed by comprehending and implementing some of the algorithms...
