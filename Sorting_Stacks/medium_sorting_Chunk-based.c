@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-//Two functions in Medium_sorting_support.c
+//roller_a and roller_b in Medium_sorting_support.c
 //Undefined behavior if any abnormal input passed the securities
 
 //Square root (rounded down) of n
