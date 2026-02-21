@@ -97,7 +97,7 @@ void	medium_algorithm(t_stack_library *lib_a, t_stack_library *lib_b,
 		while (j < (chunk / i) && lib_a -> begin != NULL)
 		{
 			roller_a(medium_search(lib_a, chunk), lib_a, bench);
-			lib_b = pb(lib_a, lib_b, print_state, bench);
+			lib_b -> begin = pb(lib_a, lib_b, print_state, bench);
 			pre_organiser (lib_b, print_state, bench, j);
 		}
 		chunk = ++i * chunk;
@@ -107,6 +107,6 @@ void	medium_algorithm(t_stack_library *lib_a, t_stack_library *lib_b,
 	while (j >= 0 && lib_b -> begin != NULL)
 	{
 		roller_b(medium_return (lib_b, j--), lib_b, bench);
-		lib_a = pa(lib_a, lib_b, print_state, bench);
+		lib_a -> begin = pa(lib_a, lib_b, print_state, bench);
 	}
 }
