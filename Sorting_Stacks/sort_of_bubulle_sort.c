@@ -62,7 +62,6 @@ void	sort_five_first(t_stack_library *stack_a, t_stack_library *stack_b,
 /* Doute sur l'usage, dois-je envoyer un pointeur, un pointeur de pointeur,
 ou "return" une variable à la fin ? À checker */
 
-
 // Second part of code sorting 5 numbers
 void	sort_five_second(t_stack_library *stack_a,
 							t_stack_library *stack_b, t_bench *bench)

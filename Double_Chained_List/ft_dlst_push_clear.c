@@ -38,7 +38,6 @@ t_stack_library	*push_back_dlst(t_stack_library *li, int content)
 	return (li);
 }
 
-
 // Create and allocate a block of t_stack at the beginning of the list
 t_stack_library	*push_front_dlst(t_stack_library *li, int content)
 {
