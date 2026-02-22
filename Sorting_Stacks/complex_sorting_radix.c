@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_sorting_radix.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kle-scor <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 14:38:27 by kle-scor          #+#    #+#             */
-/*   Updated: 2026/02/21 14:38:32 by kle-scor         ###   ########.fr       */
+/*   Updated: 2026/02/22 17:11:50 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	disorder_check(t_stack_library *lib_a)
 	return (0);
 }
 
-//Search the closest value to sent and return it's location in the stack
+//Search the closest value to send and return it's location in the stack
 int	cplx_search(t_stack_library *lib_a, int n)
 {
 	t_stack	*head;
@@ -40,7 +40,7 @@ int	cplx_search(t_stack_library *lib_a, int n)
 	int		i;
 
 	i = 1;
-	if ((head -> content & (1 << n)) == 0)
+	if ((lib_a -> begin -> content & (1 << n)) == 0)
 		return (0);
 	head = lib_a -> begin -> next;
 	tail = lib_a -> end;
@@ -75,10 +75,10 @@ int	radix(t_stack_library *lib_a, t_stack_library *lib_b, t_bench *bench,
 			if (i < lib_a -> length)
 				roller_a(i, lib_a, bench);
 			if (i < lib_a -> length)
-				lib_b -> begin = pb(stack_a, stack_b, print_state, bench);
+				pb(&lib_a, &lib_b, print_state, bench);
 		}
 		while (lib_b -> begin != NULL)
-			lib_a -> begin = pa(stack_a, stack_b, print_state, bench);
+			pa(&lib_a, &lib_b, print_state, bench);
 		n++;
 	}
 	return (0);

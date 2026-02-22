@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:03:19 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/20 18:06:31 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/22 15:39:38 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 // Detect which strategy the user wrote in as arg 1 or 2
 int	inst_detector(char **argv, int x)
 {
-	if (ft_strncmp("--simple", argv[x], 9))
+	if (ft_strncmp("--simple", argv[x], 8) == 0)
 		return (1);
-	if (ft_strncmp("--medium", argv[x], 9))
+	if (ft_strncmp("--medium", argv[x], 8) == 0)
 		return (2);
-	if (ft_strncmp("--complex", argv[x], 10))
+	if (ft_strncmp("--complex", argv[x], 9) == 0)
 		return (3);
-	if (ft_strncmp("--adaptive\0", argv[x], 11))
+	if (ft_strncmp("--adaptive\0", argv[x], 10) == 0)
 		return (0);
 	return (0);
 }
@@ -33,7 +33,7 @@ int	inst_detector_bench(char **argv, t_bench *bench, int *x)
 
 	stock = 0;
 	*x = 1;
-	if (ft_strncmp("--bench", argv[*x], 8) == 0)
+	if (ft_strncmp("--bench", argv[*x], 7) == 0)
 	{
 		*x = 2;
 		bench->bench_true = 1;
@@ -57,10 +57,14 @@ int	inst_verif(t_stack_library *lst, int argc, char **argv, t_bench *bench)
 	*pos = 0;
 	bench->disorder = disorder_calculator(lst);
 	i = inst_detector_bench(argv, bench, pos);
+	if (character_detection(argc, argv, *pos) == 1)
+	{
+		ft_print_error("Error\n");
+		exit(EXIT_FAILURE);
+	}
 	lst = full_list(lst, argc, *pos);
 	lst = stack_filler(lst, *pos, argc, argv);
-	if (character_detection(argc, argv, *pos) == 1
-		|| duplicate_detector(lst->begin) == 1)
+	if (duplicate_detector(lst->begin) == 1)
 	{
 		ft_print_error("Error\n");
 		exit(EXIT_FAILURE);
@@ -100,6 +104,9 @@ void	inst_launcher(t_stack_library *stack_a, t_stack_library *stack_b,
 {
 	int	i;
 
+	bench = ft_calloc(1, sizeof(t_bench));
+	if (!bench)
+		exit(EXIT_FAILURE);
 	i = inst_verif(stack_a, bench->argc, argv, bench);
 	if (bench->bench_true == 1)
 	{

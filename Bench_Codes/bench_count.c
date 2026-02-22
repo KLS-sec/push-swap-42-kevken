@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 15:30:02 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/20 17:44:41 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/22 15:00:20 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ float	disorder_calculator(t_stack_library *lst)
 	}
 	if (i == 0)
 		exit(EXIT_SUCCESS);
-	return (i / (float)lst -> length);
+	return (i / ((float)lst -> length - 1));
 }
 
 // Choose and print which strategy was used based on disorder
@@ -40,21 +40,21 @@ void	bench_strategy(t_bench *bench, char **argv)
 	if (inst_detector_bench(argv, bench, &x) == 0 && bench->bench_true == 1)
 	{
 		if (bench->disorder < 0.2)
-			ft_print_error("Strategy : Adaptive / O(n2)");
+			ft_print_error("Strategy : Adaptive / O(n2)\n");
 		else if (bench->disorder >= 0.2 && bench->disorder <= 0.5)
-			ft_print_error("Strategy : Adaptive / O(n√n)");
+			ft_print_error("Strategy : Adaptive / O(n√n)\n");
 		else if (bench->disorder > 0.5)
-			ft_print_error("Strategy : Adaptive / O(n log n)");
+			ft_print_error("Strategy : Adaptive / O(n log n)\n");
 	}
 	else if (inst_detector_bench(argv, bench, &x) == 1
 		&& bench->bench_true == 1)
-		ft_print_error("Strategy : Simple / O(n2)");
+		ft_print_error("Strategy : Simple / O(n2)\n");
 	else if (inst_detector_bench(argv, bench, &x) == 2
 		&& bench->bench_true == 1)
-		ft_print_error("Strategy : Medium / O(n√n)");
+		ft_print_error("Strategy : Medium / O(n√n)\n");
 	else if (inst_detector_bench(argv, bench, &x) == 3
 		&& bench->bench_true == 1)
-		ft_print_error("Strategy : Complex / O(n log n)");
+		ft_print_error("Strategy : Complex / O(n log n)\n");
 	bench = bench_calculator(bench);
 }
 
@@ -72,7 +72,7 @@ t_bench	*bench_calculator(t_bench *bench)
 		bench->nb_sa, bench->nb_sb, bench->nb_ss, bench->nb_pa, bench->nb_pb);
 	ft_print_error("ra : %d\trb : %d\trr : %d\t",
 		bench->nb_ra, bench->nb_rb, bench->nb_rr);
-	ft_print_error("ra : %d\trb : %d\trr : %d\t",
+	ft_print_error("ra : %d\trb : %d\trr : %d\n",
 		bench->nb_rra, bench->nb_rrb, bench->nb_rrr);
 	return (bench);
 }

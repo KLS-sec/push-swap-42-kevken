@@ -77,10 +77,11 @@ SRC_LNCH = Launcher/error_detection.c \
 # Sorting stacks files
 SRC_SORT = Sorting_Stacks/complex_sorting_radix.c \
            Sorting_Stacks/medium_sorting_Chunk-based.c \
+           Sorting_Stacks/Medium_sorting_support.c \
            Sorting_Stacks/sort_of_bubulle_sort.c
 
-# Combine all sources (DON'T FORGET TO REMOVE # FOR $(SRC_SORT))
-SRC = $(SRC_MAIN) $(SRC_DLST) $(SRC_OPS) $(SRC_ERR) $(SRC_LIBFT) $(SRC_PRINTF) $(SRC_BENCH) $(SRC_LNCH) #$(SRC_SORT)
+# Combine all sources
+SRC = $(SRC_MAIN) $(SRC_DLST) $(SRC_OPS) $(SRC_ERR) $(SRC_LIBFT) $(SRC_PRINTF) $(SRC_BENCH) $(SRC_LNCH) $(SRC_SORT)
 
 #SRC_BONUS = (Si jamais on se motive pour faire le bonus)
 

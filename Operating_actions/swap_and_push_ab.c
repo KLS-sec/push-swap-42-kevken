@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:05:32 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/20 18:14:40 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/22 17:12:20 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,52 +74,40 @@ void	ss(t_stack_library *stack_a, t_stack_library *stack_b,
 	return ;
 }
 
-/* Voir si envoyer un pointeur de pointeur "**stack_a"
-pourrais retransformer la fonction en void */
-
 // Transfer a block from stack_b to stack_a
-t_stack_library	*pa(t_stack_library *stack_a, t_stack_library *stack_b,
-					int print_state, t_bench *bench)
+void	pa(t_stack_library **stack_a, t_stack_library **stack_b,
+		int print_state, t_bench *bench)
 {
-	if (stack_length(stack_b) < 1)
-		return (NULL);
-	stack_a = push_front_dlst(stack_a, stack_b->begin->content);
-	stack_b = pop_back_dlst(stack_b);
+	if (stack_length(*stack_b) < 1)
+		return ;
+	*stack_a = push_front_dlst(*stack_a, (*stack_b)->begin->content);
+	*stack_b = pop_back_dlst(*stack_b);
 	if (print_state == 1)
 	{
 		ft_printf("pa\n");
 		bench->nb_pa += 1;
-		return (stack_a);
 	}
 	else if (print_state == 0)
 	{
 		bench->nb_pa += 1;
-		return (stack_a);
 	}
-	return (stack_a);
-}
-
-/* Voir si envoyer un pointeur de pointeur "**stack_a"
-pourrais retransformer la fonction en void */
-
-// Transfer a block from stack_a to stack_b
-t_stack_library	*pb(t_stack_library *stack_a,
-	t_stack_library *stack_b, int print_state, t_bench *bench)
+	return ;
+}// Transfer a block from stack_a to stack_b
+void	pb(t_stack_library **stack_a,
+		t_stack_library **stack_b, int print_state, t_bench *bench)
 {
-	if (stack_length(stack_a) < 1)
-		return (NULL);
-	stack_b = push_front_dlst(stack_b, stack_a->begin->content);
-	stack_a = pop_back_dlst(stack_a);
+	if (stack_length(*stack_a) < 1)
+		return ;
+	*stack_b = push_front_dlst(*stack_b, (*stack_a)->begin->content);
+	*stack_a = pop_back_dlst(*stack_a);
 	if (print_state == 1)
 	{
 		ft_printf("pb\n");
 		bench->nb_pb += 1;
-		return (stack_b);
 	}
 	else if (print_state == 0)
 	{
 		bench->nb_pb += 1;
-		return (stack_b);
 	}
-	return (stack_b);
+	return ;
 }

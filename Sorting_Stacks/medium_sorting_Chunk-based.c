@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_sorting_Chunk-based.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kle-scor <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 16:00:01 by kle-scor          #+#    #+#             */
-/*   Updated: 2026/02/20 16:02:53 by kle-scor         ###   ########.fr       */
+/*   Updated: 2026/02/22 17:12:33 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	medium_return(t_stack_library *lib_b, int j)
 void	pre_organiser(t_stack_library *lib_b, int print_state,
 	t_bench *bench, int *j)
 {
-	if (lib_b -> order < lib_b -> next -> order && lib_b -> length > 1)
-		sb(lib_b, print_state, *bench);
+	if (lib_b->begin->order < lib_b->begin->next->order && lib_b->length > 1)
+		sb(lib_b, print_state, bench);
 	j++;
 }
 
@@ -97,8 +97,8 @@ void	medium_algorithm(t_stack_library *lib_a, t_stack_library *lib_b,
 		while (j < (chunk / i) && lib_a -> begin != NULL)
 		{
 			roller_a(medium_search(lib_a, chunk), lib_a, bench);
-			lib_b -> begin = pb(lib_a, lib_b, print_state, bench);
-			pre_organiser (lib_b, print_state, bench, j);
+			pb(&lib_a, &lib_b, print_state, bench);
+			pre_organiser (lib_b, print_state, bench, &j);
 		}
 		chunk = ++i * chunk;
 		j = 0;
@@ -107,6 +107,6 @@ void	medium_algorithm(t_stack_library *lib_a, t_stack_library *lib_b,
 	while (j >= 0 && lib_b -> begin != NULL)
 	{
 		roller_b(medium_return (lib_b, j--), lib_b, bench);
-		lib_a -> begin = pa(lib_a, lib_b, print_state, bench);
+		pa(&lib_a, &lib_b, print_state, bench);
 	}
 }

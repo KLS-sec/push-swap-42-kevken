@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 12:39:17 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/20 16:08:34 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/22 17:12:00 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ t_stack_library	*push_front_dlst(t_stack_library *li, int content);
 t_stack_library	*pop_front_dlst(t_stack_library *li);
 t_stack_library	*pop_back_dlst(t_stack_library *li);
 t_stack_library	*clear_dlst(t_stack_library *li);
-t_stack_library	*pb(t_stack_library *stack_a, t_stack_library *stack_b,
-					int print_state, t_bench *bench);
-t_stack_library	*pa(t_stack_library *stack_a, t_stack_library *stack_b,
-					int print_state, t_bench *bench);
+void			pb(t_stack_library **stack_a, t_stack_library **stack_b,
+				int print_state, t_bench *bench);
+void			pa(t_stack_library **stack_a, t_stack_library **stack_b,
+				int print_state, t_bench *bench);
 t_stack_library	*stack_filler(t_stack_library *stack,
 					int pos, int argc, char **argv);
 t_stack			*ft_dlst_new(void);
@@ -85,7 +85,7 @@ int				inst_verif(t_stack_library *lst, int argc,
 					char **argv, t_bench *bench);
 int				character_detection(int argc, char **argv, int pos);
 int				max_min(int argc, char **argv, int j);
-int				medium_algorithm(t_stack_library *lib_a,
+void				medium_algorithm(t_stack_library *lib_a,
 					t_stack_library *lib_b, t_bench *bench, int print_state);
 void			pre_organiser(t_stack_library *lib_b, int print_state,
 					t_bench *bench, int *j);

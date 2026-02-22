@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:04:51 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/20 18:08:22 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/22 17:23:31 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	stack_normalizer(t_stack *lst)
 {
 	t_stack	*marker;
 	t_stack	*searcher;
-	int		i;
+	int	i;
 
 	marker = lst;
 	searcher = marker -> next;
@@ -26,16 +26,18 @@ void	stack_normalizer(t_stack *lst)
 	{
 		while (searcher != NULL)
 		{
-			if (searcher -> content < marker -> content)
+			if (searcher -> content < marker -> content
+			&& searcher -> order == -1) //modif la ****
 				marker = searcher;
 			searcher = searcher -> next;
 		}
 		marker -> order = i;
 		i++;
 		marker = lst;
-		while (marker -> next != NULL && marker -> order != -1)
+		while (marker != NULL && marker -> order != -1) //modif la
 			marker = marker -> next;
-		searcher = marker -> next;
+		if (marker) //modif la
+			searcher = marker -> next;
 	}
 }
 

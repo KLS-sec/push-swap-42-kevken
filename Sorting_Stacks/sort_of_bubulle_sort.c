@@ -6,7 +6,7 @@
 /*   By: kbrun <kbrun@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 11:06:23 by kbrun             #+#    #+#             */
-/*   Updated: 2026/02/20 18:17:20 by kbrun            ###   ########.fr       */
+/*   Updated: 2026/02/22 17:17:47 by kbrun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	sort_five_first(t_stack_library *stack_a, t_stack_library *stack_b,
 		if (cursor->end->order == 0 && cursor->end != cursor->begin)
 			rra(stack_a, 1, bench);
 	}
-	stack_b = pb(stack_a, stack_b, 1, bench);
-	sort_five_second (stack_a, stack_b, bench);
+	pb(&stack_a, &stack_b, 1, bench);
+	sort_five_second(stack_a, stack_b, bench);
 }
 
 /* Doute sur l'usage, dois-je envoyer un pointeur, un pointeur de pointeur,
@@ -85,10 +85,10 @@ void	sort_five_second(t_stack_library *stack_a,
 		if (cursor->end->order == 1 && cursor->end != cursor->begin)
 			rra(stack_a, 1, bench);
 	}
-	stack_b = pb(stack_a, stack_b, 1, bench);
+	pb(&stack_a, &stack_b, 1, bench);
 	sort_three(stack_a, bench);
-	pa(stack_a, stack_b, 1, bench);
-	pa(stack_a, stack_b, 1, bench);
+	pa(&stack_a, &stack_b, 1, bench);
+	pa(&stack_a, &stack_b, 1, bench);
 }
 
 // Simple algorithm of sorting, sort as many given
@@ -97,7 +97,7 @@ void	bubble_sort(t_stack_library *stack_a, t_stack_library *stack_b,
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (stack_a->begin != stack_a->end)
 	{
 		while (stack_a->begin->order != i)
@@ -106,9 +106,9 @@ void	bubble_sort(t_stack_library *stack_a, t_stack_library *stack_b,
 				sa(stack_a, 1, bench);
 			ra(stack_a, 1, bench);
 		}
-		stack_b = pb(stack_a, stack_b, 1, bench);
+		pb(&stack_a, &stack_b, 1, bench); // Mettre une condition pour ne pas le declencher inutilement
 		i++;
 	}
 	while (stack_b != NULL)
-		stack_a = pa(stack_a, stack_b, 1, bench);
+		pa(&stack_a, &stack_b, 1, bench);
 }
